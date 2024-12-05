@@ -1,0 +1,97 @@
+/* Umumiy container */
+.book-list {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Har bir kitob kartasi */
+.book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* Rasmlar tashqaridan chiqmasligi uchun */
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Kitob rasmi */
+.book-image {
+    width: 100%;
+    height: 300px; /* Barcha rasmlar bir xil balandlikda */
+    overflow: hidden;
+}
+
+.book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Rasmlarni kartaga sig'dirish */
+    object-position: center; /* Markazga moslashtirish */
+}
+
+/* Ma'lumotlar */
+.book-info {
+    padding: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.title {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.title-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.title-link:hover {
+    color: #007bff;
+}
+
+.author {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.book-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #999;
+}
+
+/* Responsivlik */
+@media (max-width: 576px) {
+    .book-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+    .book-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

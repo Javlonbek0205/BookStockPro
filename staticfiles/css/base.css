@@ -1,0 +1,61 @@
+/* Asosiy rang va typografiya */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+}
+
+/* Navbar style */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Main qism */
+main.container {
+    max-width: 800px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Footer style */
+footer {
+    margin-top: auto;
+    background-color: #343a40;
+    color: #ffffff;
+}
+/* Home sahifasidagi asosiy elementlar */
+.text-center h2 {
+    color: #343a40;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #1e7e34;
+}
+
+p a.text-primary {
+    text-decoration: underline;
+    font-weight: bold;
+}

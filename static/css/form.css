@@ -1,0 +1,42 @@
+ /* Custom styles for Django form elements */
+    form p {
+        margin: 0 0 1rem;
+        position: relative;
+    }
+
+    form p label {
+        display: block;
+        font-size: 0.875rem;
+        color: #4B5563;
+        margin-bottom: 0.5rem;
+    }
+
+    form p input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #E5E7EB;
+        border-radius: 0.25rem;
+        background-color: white;
+        font-size: 0.875rem;
+        transition: border-color 0.15s ease-in-out;
+    }
+
+    form p input:focus {
+        outline: none;
+        border-color: #06B6D4;
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+    }
+
+    /* Error styling */
+    form p .errorlist {
+        list-style: none;
+        margin: 0.25rem 0 0;
+        padding: 0;
+        color: #DC2626;
+        font-size: 0.75rem;
+    }
+
+    /* Hide default Django help text */
+    form p .helptext {
+        display: none;
+    }

@@ -1,0 +1,35 @@
+    {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Book List{% endblock title %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/book_list.css' %}">
+
+<section class="book-list">
+    {% for book in books %}
+        <div class="book-card">
+            <div class="book-image">
+                {% if book.cover %}
+                    <a href="{% url 'book_detail' book.pk %}">
+                        <img src="{{ book.cover.url }}" alt="{{ book.title }} Cover">
+                    </a>
+                {% else %}
+                    <img src="{% static 'images/default_cover.jpg' %}" alt="Default Book Cover">
+                {% endif %}
+            </div>
+            <div class="book-info">
+                <span class="tag">Owner: {{ book.owner }}</span>
+                <h3 class="title">
+                    <a href="{% url 'book_detail' book.pk %}" class="title-link">{{ book.title }}</a>
+                </h3>
+                <p class="author">{{ book.author }}</p>
+                <div class="book-meta">
+                    <span class="year">Price: {{ book.price }}UZS</span>
+                    <span class="read-time">Rating: {{ book.average_rating }}🌟</span>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+{% endblock content %}

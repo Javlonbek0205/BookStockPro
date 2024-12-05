@@ -1,0 +1,50 @@
+
+  .custom-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Karta fonining shaffofligi (oq rangga mos) */
+    color: #000000; /* Karta yozuv rangi (oq fon uchun qora rang tanlandi) */
+  }
+
+  .custom-card .card-title {
+    color: #1e90ff; /* Karta sarlavhasi rangi (havorangga mos) */
+  }
+
+  .custom-card .card-subtitle {
+    color: #4682b4; /* Karta qo'shimcha sarlavhasi rangi (havorangning ochiq rangi) */
+  }
+
+  .custom-card .card-footer a {
+    color: #1e90ff; /* Havolalar rangi (havorang) */
+  }
+
+  .custom-card .card-footer a:hover {
+    color: #4682b4; /* Havola ustida bo'lgan rangi (havorangning ochiq rangi) */
+  }
+
+  .custom-card .card-header,
+  .custom-card .card-body {
+    background-color: rgba(255, 255, 255, 0.5); /* Izoh kartasining fonining shaffofligi (oq rangga mos) */
+  }
+
+  .custom-card .blockquote-footer {
+    color: #000000; /* Izoh muallifi rangi (oq fon uchun qora rang tanlandi) */
+  }
+
+  <!---->
+  .cormorant-garamond-light {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .barlow-condensed-thin {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .playwrite-de-grund-uniquifier {
+    font-family: "Playwrite DE Grund", cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }

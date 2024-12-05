@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load my_random_tags %}
+{% load static %}
+{% block content %}
+    <style>
+    .card {
+    background: url("{% static 'img/backround.png' %}") no-repeat center center fixed; /* Oq va havorang rasmni yuklash */
+    background-size: cover;
+    color: #000000; /* Yozuv rangi (oq fon uchun qora rang tanlandi) */
+  }
+
+    </style>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <div class="text-center mt-5">
+        {% if user.is_authenticated %}
+  <div class="card" >
+    <div class="row g-0">
+      <div class="col-md-0" style="text-align: center">
+        <div class="card-body" >
+            <h1 class="playwrite-de-grund-uniquifier">Welcome {{ user.username}}</h1>
+            <h4 class="cormorant-garamond-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad autem beatae distinctio doloribus ducimus illum magnam maxime, nam nulla numquam omnis, provident quae quam quia quidem quos, tempora voluptatum.</h4>
+            <p class="barlow-condensed-thin">Click the button below to view the books.</p>
+            <a href="{% url 'book_list' %}" class="btn btn-primary btn-lg">Go to Book List</a>
+            <a href="{% url 'book_create' %}" class="btn btn-success btn-lg">Create a New Book</a>
+        </div>
+      </div>
+    </div>
+  </div>
+        {% else %}
+            <div class="container mt-5">
+  <div class="card">
+    <div class="row g-0">
+      <div class="col-md-0">
+        <div class="card-body">
+          <h1 class="playwrite-de-grund-uniquifier" >Welcome, dear User</h1>
+          <h4 class="cormorant-garamond-light" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur consequatur dolorem ea eius labore necessitatibus non odio quae soluta voluptatem? Consectetur culpa deleniti dolore dolorum ea fuga nihil sint, velit?</h4>
+          <p class="barlow-condensed-thin" >If you want to see the books, register!</p>
+         <a href="{% url 'login' %}" class="btn btn-primary" >Login</a>
+          <a href="{% url 'signup' %}" class="btn btn-success" >SignUp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            {% random_key 'salom' 'hayr' 'yanasalom' %}
+        {% endif %}
+    </div>
+{% endblock content %}

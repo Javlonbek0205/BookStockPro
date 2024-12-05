@@ -1,0 +1,113 @@
+/* Container styling */
+.book-card {
+    display: flex;
+    flex-direction: column;
+    width: 222px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.2s;
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+}
+
+/* Book Image */
+.book-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Text Content */
+.book-info {
+    padding: 15px;
+}
+
+.tag {
+    color: #fff;
+    background-color: #f76c6c;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 20px;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.author {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+/* Meta Info */
+.book-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #aaa;
+}
+
+.year,
+.read-time {
+    background-color: #f2f2f2;
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+
+/* Responsiveness */
+
+
+.book-list {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Creates 4 equal-width columns */
+}
+.book-image img {
+    width: 222px; height: 222px
+}
+
+/* Grid tizim uchun media queries */
+
+/* Kichik ekranlar (telefonlar) */
+@media (max-width: 575px) {
+    .book-list {
+        grid-template-columns: 1fr; /* Bitta ustun */
+        gap: 15px; /* Kartalar orasidagi masofa */
+    }
+}
+
+/* O'rta ekranlar (planshetlar) */
+@media (min-width: 576px) and (max-width: 991px) {
+    .book-list {
+        grid-template-columns: repeat(2, 1fr); /* Ikki ustun */
+        gap: 20px; /* Kartalar orasidagi masofa */
+    }
+}
+
+/* Katta ekranlar (stol kompyuterlari) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .book-list {
+        grid-template-columns: repeat(3, 1fr); /* Uchta ustun */
+        gap: 25px; /* Kartalar orasidagi masofa */
+    }
+}
+
+/* Juda katta ekranlar (katta monitorlar) */
+@media (min-width: 1200px) {
+    .book-list {
+        grid-template-columns: repeat(5, 1fr); /* To'rtta ustun */
+        gap: 30px; /* Kartalar orasidagi masofa */
+    }
+}

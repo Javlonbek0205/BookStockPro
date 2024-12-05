@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/book_detail.css' %}">
+
+<div class="book-detail-container">
+    <div class="book-header">
+        <div class="book-cover">
+            {% if book.cover %}
+                <img src="{{ book.cover.url }}" alt="Book Cover">
+            {% else %}
+                <div class="placeholder">No Cover Available</div>
+            {% endif %}
+        </div>
+        <div class="book-info">
+            <h1>{{ book.title }}</h1>
+            <p><strong>Author:</strong> {{ book.author }}</p>
+            <p><strong>Price:</strong> {{ book.price }}UZS</p>
+            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+            <p><strong>Owner:</strong> {{ book.owner }}</p>
+            <p><strong>Quantity:</strong> {{ book.quantity }}</p>
+
+    <div class="categories">
+       <div>
+           <ul style="list-style-type: none; padding: 0; margin: 0; ">
+               <li>{% for category in categories %}<span class="category-tag">{{ category.name }}</span>{% endfor %}</li>
+           </ul>
+        </div>
+    </div>
+
+    <div class="average-rating">
+        <h3>Average Rating: {{ book.average_rating }}<span class="star filled">🌟</span></h3>
+    </div>
+
+
+
+    <div class="additional-info">
+        <h2>Additional Information</h2>
+        {% if additional_info %}
+            <p><strong>Title:</strong> {{ additional_info.name }}</p> <p><strong>Info:</strong> {{ additional_info.desc }}</p>
+        {% else %}
+            <p>No additional information available.</p>
+        {% endif %}
+    </div>
+        </div>
+    </div>
+<div class="reviews-section">
+    <h2>Description</h2>
+    <div class="accordion" id="descriptionAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingDescription">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription" aria-expanded="false" aria-controls="collapseDescription">
+                    Show Description
+                </button>
+            </h2>
+            <div id="collapseDescription" class="accordion-collapse collapse" aria-labelledby="headingDescription" data-bs-parent="#descriptionAccordion">
+                <div class="accordion-body">
+                    <ul class="reviews-list">
+                        {% if book.short_description %}
+                            <li class="mb-3">
+                                <div class="review-content">
+                                    <p>{{ book.short_description }}</p>
+                                    <span class="review-author">- Short description</span>
+                                </div>
+                            </li>
+                        {% else %}
+                            <p>No short description available.</p>
+                        {% endif %}
+                        {% if book.long_description %}
+                            <li class="mb-3">
+                                <div class="review-content">
+                                    <p>{{ book.long_description }}</p>
+                                    <span class="review-author">- Long description</span>
+                                </div>
+                            </li>
+                        {% else %}
+                            <p>No long description available.</p>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="reviews-section">
+    <h2>Reviews</h2>
+    <div class="accordion" id="reviewsAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingReviews">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReviews" aria-expanded="false" aria-controls="collapseReviews">
+                    Show Reviews
+                </button>
+            </h2>
+            <div id="collapseReviews" class="accordion-collapse collapse" aria-labelledby="headingReviews" data-bs-parent="#reviewsAccordion">
+                <div class="accordion-body">
+                    {% if reviews %}
+                        <ul class="reviews-list">
+                            {% for review in reviews %}
+                                <li class="mb-3">
+                                    <div class="review-content">
+                                        <p>{{ review.text }}</p>
+                                        <div class="rating">
+                                            {% for i in "12345"|slice:review.rating %}
+                                                <span class="star filled" style="color: gold;">★</span>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="review-meta">
+                                            <span class="review-author">- {{ review.user }}</span>
+                                            <span class="review-date">{{ review.created_at|date:"F j, Y, g:i a" }}</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No reviews yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="add-review">
+        <h2>Add a Review</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            <textarea name="text" rows="5" placeholder="Write your review here..."></textarea>
+            <div class="rating-input">
+                <label>Rate:</label>
+                    <input type="radio" name="rating" value="1" >⭐
+                    <input type="radio" name="rating" value="2" >⭐⭐
+                    <input type="radio" name="rating" value="3" >⭐⭐⭐
+                    <input type="radio" name="rating" value="4" >⭐⭐⭐⭐
+                    <input type="radio" name="rating" value="5" >⭐⭐⭐⭐⭐
+            <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="actions">
+        <a href="{% url 'book_list' %}" class="btn-back">Back to Book List</a>
+        {% if book.owner == request.user %}
+            <a href="{% url 'book_update' book.pk %}" class="btn-edit">Edit Book</a>
+            <a href="{% url 'book_delete' book.pk %}" class="btn-delete">Delete Book</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
