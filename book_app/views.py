@@ -48,6 +48,7 @@ def book_detail_view(request, pk):
 def book_create_view(request):
     book = BookCreateForm(request.POST, request.FILES or None)
     additional_info = AdditionalInfoCreateForm(request.POST or None)
+
     if request.method == "POST" and  book.is_valid() and additional_info.is_valid():
         book_item = book.save(commit=False)
         book_item.owner = request.user
